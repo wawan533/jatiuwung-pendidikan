@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADMIN PANEL - Jatiuwung Pendidikan</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,Arial;background:#0f172a;color:white;min-height:100vh}
+.header{background:#b91c1c;padding:15px;text-align:center;font-weight:900;font-size:20px}
+.container{max-width:600px;margin:0 auto;padding:15px}
+.login-box{background:white;color:#0f172a;border-radius:14px;padding:20px;margin-top:20px}
+input,select,textarea{width:100%;padding:12px;border-radius:10px;border:2px solid #e2e8f0;margin:8px 0;font-size:14px}
+.btn{background:#16a34a;color:white;padding:14px;border-radius:10px;border:none;width:100%;font-weight:800;font-size:16px;margin-top:10px}
+.btn-red{background:#b91c1c}
+.card{background:white;color:#0f172a;border-radius:12px;padding:12px;margin:10px 0;display:flex;gap:10px}
+.card img{width:70px;height:55px;object-fit:cover;border-radius:8px}
+.small{font-size:11px;color:#64748b}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="header">🔐 ADMIN PANEL - JATIUWUNG PENDIDIKAN</div>
+<div class="container">
+
+<div id="loginBox" class="login-box">
+<h3>Login Admin</h3>
+<p class="small">Password default: jatiuwung2026</p>
+<input type="password" id="pass" placeholder="Masukkan password">
+<button class="btn" onclick="login()">MASUK ADMIN</button>
+</div>
+
+<div id="adminBox" class="hidden">
+<div style="background:#dcfce7;color:#15803d;padding:12px;border-radius:10px;font-size:13px">
+✅ Login berhasil! Sekarang Bapak bisa tambah berita dari HP tanpa buka Sheet ribet.
+</div>
+
+<h3 style="margin-top:20px">➕ Tambah Berita Baru</h3>
+<div class="login-box">
+<input id="judul" placeholder="Judul Berita (contoh: SDN Jatake 5 Juara)">
+<select id="kategori">
+<option>HEADLINE NEW ERA</option>
+<option>NEW • PPDB</option>
+<option>PRESTASI</option>
+<option>KEGIATAN</option>
+<option>INFO SEKOLAH</option>
+</select>
+<input id="foto" placeholder="Link Foto (atau kosongkan pakai foto default)">
+<select id="posisi">
+<option value="headline">Jadikan HEADLINE BESAR</option>
+<option value="list" selected>Berita List Biasa</option>
+</select>
+<input id="waktu" value="Baru saja" placeholder="Waktu">
+<button class="btn" onclick="tambahBerita()">🚀 TERBITKAN BERITA</button>
+<button class="btn btn-red" onclick="window.open('https://docs.google.com/spreadsheets/d/1kuLq23NXFSnzSaAnxnOsiTOC86IjNpSpkcooGseRVk/edit','_blank')">📊 BUKA GOOGLE SHEET</button>
+</div>
+
+<h3 style="margin-top:20px">📰 Berita Aktif (dari Google Sheet)</h3>
+<div id="list"></div>
+</div>
+
+</div>
+<script>
+const SHEET_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vRtgX3PRvnfhnqNzxW4YR-hJZ3otBR0dHPv4bLYfvqUQKvFO0NZYIbRWjMsBdbw4pJZuSheAaFBCWoT/pub?output=csv";
+const SHEET_EDIT="https://docs.google.com/spreadsheets/d/1kuLq23NXFSnzSaAnxnOsiTOC86IjNpSpkcooGseRVk/edit";
+
+function login(){
+ if(document.getElementById('pass').value==="jatiuwung2026"){
+  document.getElementById('loginBox').classList.add('hidden');
+  document.getElementById('adminBox').classList.remove('hidden');
+  load();
+ }else alert("Password salah! Coba: jatiuwung2026");
+}
+
+async function load(){
+ try{
+  let r=await fetch(SHEET_URL+"?t="+Date.now());
+  let t=await r.text();
+  let lines=t.trim().split("\n").slice(1);
+  document.getElementById('list').innerHTML=lines.map((l,i)=>{
+   let c=l.split(",").map(x=>x.replace(/^"|"$/g,""));
+   return `<div class="card"><img src="${c[2]||'https://images.unsplash.com/photo-1580582932707-520aed937b7b'}" onerror="this.src='https://images.unsplash.com/photo-1580582932707-520aed937b7b'"><div><b style="font-size:13px">${c[0]}</b><div class="small">${c[1]} • ${c[3]} • ${c[4]}</div></div></div>`;
+  }).join('');
+ }catch(e){document.getElementById('list').innerHTML="Gagal load Sheet. Pastikan sudah Publish to Web CSV."}
+}
+
+function tambahBerita(){
+ let j=document.getElementById('judul').value;
+ if(!j) return alert("Isi judul dulu Pak!");
+ let k=document.getElementById('kategori').value;
+ let f=document.getElementById('foto').value||"https://images.unsplash.com/photo-1580582932707-520aed937b7b";
+ let w=document.getElementById('waktu').value;
+ let p=document.getElementById('posisi').value;
+ let baris=`${j},${k},${f},${w},${p}`;
+ alert("BERITA SIAP!\\n\\n"+baris+"\\n\\nSekarang klik OK, akan dibuka Google Sheet.\\nPaste baris ini di baris paling bawah di Sheet, lalu SAVE. Otomatis 30 detik tayang di web!");
+ window.open(SHEET_EDIT,"_blank");
+ document.getElementById('judul').value="";
+}
+</script>
+</body>
+</html>

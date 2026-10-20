@@ -101,6 +101,96 @@
     <div>
       <div class="sidebar-card ads-box">
         <h3 style="color:#92400e;margin-bottom:5px">💰 PASANG IKLAN ANDA DISINI</h3>
+       <!-- WIDGET KOMPLIT: ZODIAK + JAWA + WETON -->
+<div style="background:white; border-radius:12px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.08); border:1px solid #e2e8f0; margin-top:16px;">
+  
+  <!-- TANGGAL JAWA HARI INI -->
+  <div style="background:linear-gradient(135deg,#064e3b,#065f46); color:white; border-radius:10px; padding:12px; text-align:center; margin-bottom:12px;">
+    <div style="font-size:11px; opacity:0.8; letter-spacing:1px;">HARI INI</div>
+    <div id="tglMasehi" style="font-weight:700; font-size:14px;"></div>
+    <div id="tglJawa" style="font-size:13px; margin-top:4px; background:rgba(255,255,255,0.15); padding:4px 8px; border-radius:20px; display:inline-block;"></div>
+    <div id="wetonHari" style="font-size:11px; margin-top:6px; opacity:0.9;"></div>
+  </div>
+
+  <div style="font-weight:700; font-size:16px; border-left:4px solid #7c3aed; padding-left:10px; margin-bottom:8px;">
+    🔮 ZODIAK & WETON
+  </div>
+  <p style="font-size:11px; color:#64748b; margin-bottom:10px;">Klik zodiakmu, cek hoki + wetonmu!</p>
+  
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:7px; text-align:center;">
+    <div onclick="showZodiak('Aries')" style="cursor:pointer; background:#fef2f2; padding:7px; border-radius:10px; border:1px solid #fecaca;"><div style="font-size:20px;">♈</div><div style="font-size:10px; font-weight:700;">Aries</div></div>
+    <div onclick="showZodiak('Taurus')" style="cursor:pointer; background:#f0fdf4; padding:7px; border-radius:10px; border:1px solid #bbf7d0;"><div style="font-size:20px;">♉</div><div style="font-size:10px; font-weight:700;">Taurus</div></div>
+    <div onclick="showZodiak('Gemini')" style="cursor:pointer; background:#fefce8; padding:7px; border-radius:10px; border:1px solid #fef08a;"><div style="font-size:20px;">♊</div><div style="font-size:10px; font-weight:700;">Gemini</div></div>
+    <div onclick="showZodiak('Cancer')" style="cursor:pointer; background:#eff6ff; padding:7px; border-radius:10px; border:1px solid #bfdbfe;"><div style="font-size:20px;">♋</div><div style="font-size:10px; font-weight:700;">Cancer</div></div>
+    <div onclick="showZodiak('Leo')" style="cursor:pointer; background:#fff7ed; padding:7px; border-radius:10px; border:1px solid #fed7aa;"><div style="font-size:20px;">♌</div><div style="font-size:10px; font-weight:700;">Leo</div></div>
+    <div onclick="showZodiak('Virgo')" style="cursor:pointer; background:#f5f3ff; padding:7px; border-radius:10px; border:1px solid #ddd6fe;"><div style="font-size:20px;">♍</div><div style="font-size:10px; font-weight:700;">Virgo</div></div>
+    <div onclick="showZodiak('Libra')" style="cursor:pointer; background:#fdf2f8; padding:7px; border-radius:10px; border:1px solid #fbcfe8;"><div style="font-size:20px;">♎</div><div style="font-size:10px; font-weight:700;">Libra</div></div>
+    <div onclick="showZodiak('Scorpio')" style="cursor:pointer; background:#f0fdfa; padding:7px; border-radius:10px; border:1px solid #99f6e0;"><div style="font-size:20px;">♏</div><div style="font-size:10px; font-weight:700;">Scorpio</div></div>
+    <div onclick="showZodiak('Sagitarius')" style="cursor:pointer; background:#fef2f2; padding:7px; border-radius:10px; border:1px solid #fecaca;"><div style="font-size:20px;">♐</div><div style="font-size:10px; font-weight:700;">Sagitarius</div></div>
+    <div onclick="showZodiak('Capricorn')" style="cursor:pointer; background:#f1f5f9; padding:7px; border-radius:10px; border:1px solid #cbd5e1;"><div style="font-size:20px;">♑</div><div style="font-size:10px; font-weight:700;">Capricorn</div></div>
+    <div onclick="showZodiak('Aquarius')" style="cursor:pointer; background:#ecfeff; padding:7px; border-radius:10px; border:1px solid #a5f3fc;"><div style="font-size:20px;">♒</div><div style="font-size:10px; font-weight:700;">Aquarius</div></div>
+    <div onclick="showZodiak('Pisces')" style="cursor:pointer; background:#fdf4ff; padding:7px; border-radius:10px; border:1px solid #f0abfc;"><div style="font-size:20px;">♓</div><div style="font-size:10px; font-weight:700;">Pisces</div></div>
+  </div>
+
+  <div id="hasilZodiak" style="display:none; margin-top:12px; background:#f8fafc; border:2px dashed #7c3aed; border-radius:12px; padding:12px;">
+    <div id="judulZodiak" style="font-weight:700; color:#7c3aed; font-size:13px;"></div>
+    <div id="isiZodiak" style="font-size:12px; line-height:1.6; margin-top:6px;"></div>
+    <div id="wetonBonus" style="font-size:11px; margin-top:8px; background:#fef3c7; padding:6px; border-radius:6px;"></div>
+  </div>
+
+  <!-- PRIMBON SINGKAT -->
+  <div style="margin-top:12px; background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:10px;">
+    <div style="font-size:12px; font-weight:700; color:#92400e;">📜 PRIMBON HARI INI:</div>
+    <div id="primbonHari" style="font-size:11px; line-height:1.5; color:#78350f; margin-top:4px;"></div>
+  </div>
+</div>
+
+<script>
+// TANGGAL JAWA OTOMATIS
+const pasaran = ['Legi','Pahing','Pon','Wage','Kliwon'];
+const wuku = ['Sinta','Landep','Wukir','Kurantil','Tolu','Gumbreg','Warigalit','Wariagung','Julungwangi','Sungsang','Galungan','Kuningan','Langkir','Mandasiya','Julungpujut','Pahang','Kuruwelut','Marakeh','Tambir','Medangkungan','Maktal','Wuye','Manahil','Prangbakat','Bala','Wugu','Wayang','Kulawu','Dukut','Watugunung'];
+const neptuHari = { 'Minggu':5, 'Senin':4, 'Selasa':3, 'Rabu':7, 'Kamis':8, 'Jumat':6, 'Sabtu':9 };
+const neptuPasaran = { 'Legi':5, 'Pahing':9, 'Pon':7, 'Wage':4, 'Kliwon':8 };
+
+let now = new Date();
+let hariIndo = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'][now.getDay()];
+let tgl = now.getDate() + ' ' + ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'][now.getMonth()] + ' ' + now.getFullYear();
+let idxPasaran = (Math.floor((now - new Date(2024,0,1))/86400000) + 1) % 5;
+let pasaranHari = pasaran[idxPasaran];
+let neptu = neptuHari[hariIndo] + neptuPasaran[pasaranHari];
+
+document.getElementById('tglMasehi').innerHTML = hariIndo + ', ' + tgl;
+document.getElementById('tglJawa').innerHTML = pasaranHari + ' • Wuku ' + wuku[now.getDate() % 30];
+document.getElementById('wetonHari').innerHTML = 'Neptu Hari Ini: ' + neptu + ' (' + hariIndo + '=' + neptuHari[hariIndo] + ' + ' + pasaranHari + '=' + neptuPasaran[pasaranHari] + ')';
+
+let primbonText = '';
+if(neptu < 10) primbonText = 'Hari kurang baik untuk hajatan besar, cocok untuk belajar & tirakat.';
+else if(neptu < 14) primbonText = 'Hari cukup baik, rezeki mengalir. Cocok untuk memulai usaha kecil.';
+else primbonText = 'Hari SANGAT BAIK! Hoki besar, cocok untuk selamatan, pindahan & buka usaha.';
+document.getElementById('primbonHari').innerHTML = primbonText + ' | Arah hoki: Timur Laut.';
+
+function showZodiak(nama){
+  const data = {
+    'Aries': '🔥 Semangat membara! Cocok untuk lomba & tampil. Wetonmu hari ini: keberanianmu membawa berkah.',
+    'Taurus': '💰 Rezeki Legi! Ada uang jajan tambahan. Jangan lupa sedekah.',
+    'Gemini': '💬 Banyak ide cemerlang, cocok presentasi. Pasaran Pahing bikin omonganmu didengar.',
+    'Cancer': '❤️ Hati sensitif tapi disayang banyak orang. Wuku hari ini bikin kamu hoki cinta.',
+    'Leo': '👑 Tampil percaya diri! Neptu besar hari ini mendukungmu jadi juara seperti SDN Jatake 5.',
+    'Virgo': '📚 Fokus belajar on fire! Tugas cepat selesai, nilai bagus menanti.',
+    'Libra': '⚖️ Seimbang! Cocok untuk baikan & kerjasama. Angka hoki: ' + (neptu % 9 + 1),
+    'Scorpio': '🔍 Intuisi tajam! Bisa nebak soal ulangan. Hati-hati jangan curigaan.',
+    'Sagitarius': '✈️ Pengen eksplor! Cocok belajar di luar kelas, banyak ilmu baru.',
+    'Capricorn': '🏆 Kerja keras dilihat guru! Tetap disiplin, raih prestasimu!',
+    'Aquarius': '💡 Ide kreatifmu bikin kagum! Cocok bikin prakarya & konten.',
+    'Pisces': '🎨 Imajinasi tinggi! Cocok seni & menulis. Istirahat cukup ya.'
+  };
+  document.getElementById('hasilZodiak').style.display='block';
+  document.getElementById('judulZodiak').innerHTML = '🔮 Ramalan ' + nama + ' - ' + pasaranHari + ' ' + hariIndo;
+  document.getElementById('isiZodiak').innerHTML = data[nama];
+  document.getElementById('wetonBonus').innerHTML = '✨ <b>Weton Bonus:</b> Neptu kamu hari ini ' + (Math.floor(Math.random()*5)+7) + ', cocok pakai baju warna ' + ['Merah','Hijau','Kuning','Biru','Putih'][now.getDay() % 5] + ' biar hoki!';
+}
+</script>
+<!-- AKHIR WIDGET KOMPLIT -->
         <p style="font-size:13px;color:#78350f;line-height:1.5">Jangkau Ribuan Guru, Siswa & Orang Tua di Kecamatan Jatiuwung!</p>
         <p style="margin-top:10px;font-weight:700;font-size:18px;color:#b91c1c">Mulai Rp 250.000 / Bulan</p>
         <p style="font-size:12px;margin-top:5px">Banner, Artikel Promosi, & Liputan Kegiatan</p>
